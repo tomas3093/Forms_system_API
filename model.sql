@@ -26,6 +26,7 @@ Create table users (
 Create table forms (
 	form_id Int NOT NULL,
 	user_id Int NOT NULL,
+	name Varchar(35) NOT NULL,
 	created Datetime NOT NULL,
  Primary Key (form_id)) ENGINE = MyISAM;
 

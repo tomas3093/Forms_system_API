@@ -144,17 +144,44 @@ exports.apiGetResponseCheck = function (req, res, err, data, noRoute=false) {
         }
     }
 
-    console.log(this.getCurrentTime() + '\t' + status + '\t\t' + req.url);
+    this.printRespondLog(req, status);
 };
 
 
 /**
- * Checks if form field value is defined or not and returns correct value
- * @param fieldValue
+ * Prints respond log to console for every HTTP request
+ * @param req
+ * @param status HTTP status
  */
-exports.optionalFormFieldCheck = function (fieldValue) {
-    if (fieldValue === undefined || fieldValue === null || fieldValue.trim() === '')
+exports.printRespondLog = function (req, status) {
+    console.log(this.getCurrentTime() + '\t' + req.method + '\t' + status + '\t\t' + req.url);
+};
+
+
+/**
+ * If newValue is not defined returns null, otherwise returns trimmed newValue
+ * @param newValue
+ */
+exports.optionalFieldCheck = function (newValue) {
+    if (newValue === undefined || newValue === null || newValue.trim() === '')
         return null;
     else
-        return fieldValue.trim();
+        return newValue.trim();
+};
+
+
+/**
+ * If newValue is not defined, returns oldValue, otherwise returns trimmed newValue
+ * @param oldValue
+ * @param newValue
+ */
+exports.updatedFieldCheck = function (oldValue, newValue) {
+
+    if (newValue === null)
+        return null;
+
+    if (newValue === undefined || newValue.trim() === '')
+        return oldValue;
+    else
+        return newValue.trim();
 };
