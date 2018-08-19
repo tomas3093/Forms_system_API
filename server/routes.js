@@ -354,7 +354,7 @@ const appRouter = function (app) {
     // ### FORM QUESTION TYPES ###
 
     /**
-     * Returns JSON with question-types specified by ID
+     * Returns JSON with question-type specified by ID
      */
     app.get('/api/question-type/:id', function (req, res) {
         db.query(   'SELECT * FROM form_question_types WHERE question_type_id = ?',
