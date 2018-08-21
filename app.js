@@ -11,6 +11,10 @@ app.set('view engine', 'pug');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//CORS
+var cors = require('cors');
+app.use(cors({credentials: true, origin: true}));
+
 const routes = require('./server/routes.js');
 routes(app);
 
