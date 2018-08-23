@@ -73,8 +73,10 @@ const appRouter = function (app) {
                             let v = {
                                 user_id: data[0].user_id,
                                 username: req.body.username,
+                                password: req.body.password,
                                 email: req.body.email,
-                                last_login: myFunctions.formatDate(new Date(), 'y-MM-dd HH:mm:ss'),
+                                registered: myFunctions.formatDate(new Date(), 'y-MM-dd HH:mm:ss'),
+                                last_login: null,
                                 name: myFunctions.optionalFieldCheck(req.body.name),
                                 sex: myFunctions.optionalFieldCheck(req.body.sex),
                                 country: myFunctions.optionalFieldCheck(req.body.country),
@@ -83,9 +85,9 @@ const appRouter = function (app) {
 
                             // INSERT VALUES
                             db.query(   'INSERT INTO users ' +
-                                        '(user_id, username, email, last_login, name, sex, country, birthdate) ' +
-                                        'VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
-                                        [v.user_id, v.username, v.email, v.last_login, v.name, v.sex, v.country, v.birthdate],
+                                        '(user_id, username, password, email, registered, last_login, ' +
+                                        'name, sex, country, birthdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                                        [v.user_id, v.username, v.password, v.email, v.registered, v.last_login, v.name, v.sex, v.country, v.birthdate],
                                         function (err) {
                                             if (err) {
                                                 status = consts.HTTP_STATUS_500;
@@ -125,8 +127,10 @@ const appRouter = function (app) {
                             let v = {
                                 user_id: data[0].user_id,
                                 username: myFunctions.updatedFieldCheck(data[0].username, req.body.username),
+                                password: myFunctions.updatedFieldCheck(data[0].password, req.body.password),
                                 email: myFunctions.updatedFieldCheck(data[0].email, req.body.email),
-                                last_login: data[0].last_login,
+                                registered: data[0].registered,
+                                last_login: myFunctions.updatedFieldCheck(data[0].last_login, req.body.last_login),
                                 name: myFunctions.updatedFieldCheck(data[0].name, req.body.name),
                                 sex: myFunctions.updatedFieldCheck(data[0].sex, req.body.sex),
                                 country: myFunctions.updatedFieldCheck(data[0].country, req.body.country),
@@ -135,10 +139,9 @@ const appRouter = function (app) {
 
                             // UPDATE VALUES
                             db.query(   'UPDATE users ' +
-                                        'SET username = ?, email = ?, last_login = ?, name = ?, ' +
-                                        'sex = ?, country = ?, birthdate = ? ' +
-                                        'WHERE user_id = ?',
-                                        [v.user_id, v.username, v.email, v.last_login, v.name, v.sex, v.country, v.birthdate, v.user_id],
+                                        'SET username = ?, password = ?, email = ?, last_login = ?, name = ?, ' +
+                                        'sex = ?, country = ?, birthdate = ? WHERE user_id = ?',
+                                        [v.username, v.password, v.email, v.last_login, v.name, v.sex, v.country, v.birthdate, v.user_id],
                                         function (err) {
                                             if (err) {
                                                 status = consts.HTTP_STATUS_500;

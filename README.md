@@ -17,6 +17,7 @@ USERS
                                         - request body:
 
                                             username: george
+                                            password: secretpassword
                                             email: mthn@gg.vvcs
                                             name: [optional]
                                             sex: [optional]
@@ -27,7 +28,9 @@ USERS
                                             - request body:
 
                                                 username: [optional]
+                                                password: [optional]
                                                 email: [optional]
+                                                last_login: [optional]
                                                 name: [optional]
                                                 sex: [optional]
                                                 country: [optional]
