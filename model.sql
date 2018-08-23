@@ -1,6 +1,6 @@
 /*
 Created		8/5/2018
-Modified		8/5/2018
+Modified		8/16/2018
 Project		
 Model		
 Company		
@@ -13,8 +13,10 @@ Database		mySQL 5
 Create table users (
 	user_id Int NOT NULL,
 	username Varchar(30) NOT NULL,
+	password Char(128) NOT NULL,
 	email Varchar(40) NOT NULL,
-	last_login Datetime NOT NULL,
+	registered Datetime NOT NULL,
+	last_login Datetime,
 	name Varchar(30),
 	sex Char(1),
 	country Varchar(40),
