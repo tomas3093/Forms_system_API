@@ -405,7 +405,7 @@ const appRouter = function (app) {
                             // INSERT VALUES
                             db.query(   'INSERT INTO form_question_types ' +
                                         '(question_type_id, type_name) VALUES (?, ?)',
-                                        [v.form_id, v.user_id, v.name, v.created],
+                                        [v.question_type_id, v.type_name],
                                         function (err) {
                                             if (err) {
                                                 status = consts.HTTP_STATUS_500;
