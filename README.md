@@ -43,7 +43,7 @@ FORMS
 ------
 
     GET     /api/form/:id               - JSON - form with id
-    GET     /api/forms?user=:id         - JSON - all forms created by specific user
+    GET     /api/forms/user/:id         - JSON - all forms created by specific user
 
     PUT     /api/form                   - creates new form
                                             - request body:
@@ -84,7 +84,7 @@ FORM QUESTIONS
 ------
 
     GET     /api/question/:id           - JSON - question with id
-    GET     /api/questions?form=:id     - JSON - all questions of particular form
+    GET     /api/questions/form/:id     - JSON - all questions of particular form
 
     PUT     /api/question               - creates new question
                                             - request body:
@@ -108,7 +108,7 @@ FORM QUESTION options
 ------
 
     GET     /api/option/:id             - JSON - option with id
-    GET     /api/options?question=:id   - JSON - all options of particular question
+    GET     /api/options/question/:id   - JSON - all options of particular question
 
     PUT     /api/option                 - creates new option
                                             - request body:

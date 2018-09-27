@@ -214,8 +214,9 @@ const appRouter = function (app) {
     /**
      * Returns JSON with forms created by specific user
      */
-    app.get('/api/forms?user=:id', function (req, res) {
+    app.get('/api/forms/user/:id', function (req, res) {
         db.query(   'SELECT * FROM forms WHERE user_id = ?',
+                    [req.params.id],
                     function (err, data) {
                         myFunctions.apiGetResponseCheck(req, res, err, data);
                     })
@@ -523,7 +524,7 @@ const appRouter = function (app) {
     /**
      * Returns JSON with all questions of particular form
      */
-    app.get('/api/questions?form=:id', function (req, res) {
+    app.get('/api/questions/form/:id', function (req, res) {
         db.query(   'SELECT * FROM form_questions WHERE form_id = ?',
                     [req.params.id],
                     function (err, data) {
@@ -683,7 +684,7 @@ const appRouter = function (app) {
     /**
      * Returns JSON with all options of particular question
      */
-    app.get('/api/options?question=:id', function (req, res) {
+    app.get('/api/options/question/:id', function (req, res) {
         db.query(   'SELECT * FROM form_options WHERE form_question_id = ? ' +
             '       ORDER BY sequence_number',
                     [req.params.id],
