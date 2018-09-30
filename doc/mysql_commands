@@ -1,0 +1,14 @@
+MySQL setup on this computer:
+
+------------------------------
+user:	root
+pswd:	
+
+sudo mysql -u root
+------------------------------
+database:	form-system
+user:		demo-app
+pswd:		just-demo
+------------------------------
+
+sudo service mysql start [stop, restart, status]

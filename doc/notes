@@ -1,0 +1,26 @@
+Angular CLI commands:
+
+ng new <name> 	... creates new project
+ng serve	... starts the angular app at localhost:4200
+ng g c <name>	... generates new component
+ng g s <name>	... generates new service
+
+Dependency injection
+- uplne oddelenie nejakej triedy od inych tried
+- dependency sa zaregistruje v poli 'providers' a ak ju chceme niekde pouzit, tak ju posleme do danej triedy
+ako parameter v konstruktore. Angular si tam potom vlozi nainicializovanu singleton instanciu
+
+
+----------------------------------
+Forms system
+----------------------------------
+
+Features:	- questions with different sorts of answers
+			- textarea
+			- checkboxes
+			- radio buttons
+			- ...
+
+		- each form has author, ID, list of question IDs which consist of
+		- form for creating questions
+
